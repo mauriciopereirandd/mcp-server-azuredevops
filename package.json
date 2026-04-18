@@ -1,0 +1,26 @@
+{
+  "name": "mcp-azuredevops",
+  "version": "1.0.0",
+  "description": "MCP Server for Azure DevOps",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-azuredevops": "dist/index.js",
+    "mcp-azuredevops-setup": "dist/setup.js"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
