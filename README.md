@@ -1,4 +1,7 @@
-# MCP Server — Azure DevOps
+# MCP Server — Azure DevOps (Node 16+)
+
+> **Versão compatível com Node.js 16+.**
+> Para Node.js 18+, use o branch `main`.
 
 MCP Server para integração com Azure DevOps / TFS. Permite que agentes de IA criem Pull Requests e leiam páginas de Wiki diretamente do editor.
 
@@ -12,7 +15,7 @@ MCP Server para integração com Azure DevOps / TFS. Permite que agentes de IA c
 
 ## Pré-requisitos
 
-- Node.js 18+
+- Node.js 16+
 - PAT Token do Azure DevOps com permissões: **Code (Read & Write)**, **Wiki (Read)**
 
 ## Instalação
@@ -20,14 +23,12 @@ MCP Server para integração com Azure DevOps / TFS. Permite que agentes de IA c
 ### Setup automático (recomendado)
 
 ```bash
-npx -y -p github:mauriciopereirandd/mcp-server-azuredevops mcp-azuredevops-setup
+npx -y -p github:mauriciopereirandd/mcp-server-azuredevops#v1.0.0-node16 mcp-azuredevops-setup
 ```
 
-Pergunta credenciais e configura Claude Code e/ou VS Code automaticamente.
+Instala globalmente e configura Claude Code e/ou VS Code automaticamente.
 
-### Manual (terminal)
-
-### Claude Code
+### Manual — Claude Code
 
 Adicione em `~/.claude/settings.json`:
 
@@ -36,7 +37,7 @@ Adicione em `~/.claude/settings.json`:
   "mcpServers": {
     "azuredevops": {
       "command": "npx",
-      "args": ["-y", "github:mauriciopereirandd/mcp-server-azuredevops"],
+      "args": ["-y", "github:mauriciopereirandd/mcp-server-azuredevops#v1.0.0-node16"],
       "env": {
         "ADO_ORG_URL": "https://tfs.suaempresa.com/Collection",
         "ADO_PROJECT": "NomeDoProjeto",
@@ -48,9 +49,9 @@ Adicione em `~/.claude/settings.json`:
 }
 ```
 
-### VS Code
+### Manual — VS Code
 
-Adicione em `.vscode/mcp.json` no workspace:
+Adicione em `~/Library/Application Support/Code/User/mcp.json` (global) ou `.vscode/mcp.json` (workspace):
 
 ```json
 {
@@ -58,7 +59,7 @@ Adicione em `.vscode/mcp.json` no workspace:
     "azuredevops": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "github:mauriciopereirandd/mcp-server-azuredevops"],
+      "args": ["-y", "github:mauriciopereirandd/mcp-server-azuredevops#v1.0.0-node16"],
       "env": {
         "ADO_ORG_URL": "https://tfs.suaempresa.com/Collection",
         "ADO_PROJECT": "NomeDoProjeto",
@@ -91,18 +92,9 @@ Adicione em `.vscode/mcp.json` no workspace:
 ## Desenvolvimento local
 
 ```bash
-git clone https://github.com/mauriciopereirandd/mcp-server-azuredevops
+git clone -b node16-compat https://github.com/mauriciopereirandd/mcp-server-azuredevops
 cd mcp-server-azuredevops
 npm install
 cp .env.example .env  # edite com suas credenciais
 npm run dev
-```
-
-### Usar build local no MCP
-
-```json
-{
-  "command": "node",
-  "args": ["/caminho/absoluto/mcp-server-azuredevops/dist/index.js"]
-}
 ```

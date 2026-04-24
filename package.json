@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "MCP Server for Azure DevOps",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=16"
+  },
   "bin": {
     "mcp-azuredevops": "dist/index.js",
     "mcp-azuredevops-setup": "dist/setup.js"
@@ -16,10 +19,12 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
     "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/node-fetch": "^2.6.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }

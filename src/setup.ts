@@ -48,7 +48,7 @@ async function main() {
   const globalBin = resolveGlobalBin();
   if (!globalBin) {
     console.log("Instalando globalmente...");
-    execSync("npm install -g github:mauriciopereirandd/mcp-server-azuredevops", { stdio: "inherit" });
+    execSync("npm install -g github:mauriciopereirandd/mcp-server-azuredevops#v1.0.0-node16", { stdio: "inherit" });
   }
 
   const binPath = resolveGlobalBin() ?? "mcp-azuredevops";

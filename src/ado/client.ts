@@ -1,3 +1,4 @@
+import fetch, { Headers, RequestInit, Response } from "node-fetch";
 import { ADO_API_VERSION, ADO_ORG_URL, ADO_PROJECT, authHeader } from "../config.js";
 
 type QueryValue = string | number | boolean | null | undefined;
@@ -31,7 +32,7 @@ export class AdoClient {
   }
 
   async fetchByUrl(url: string, init?: RequestInit): Promise<Response> {
-    const headers = new Headers(init?.headers);
+    const headers = new Headers(init?.headers as Record<string, string>);
     headers.set("Authorization", this.authorization);
     return fetch(url, { ...init, headers });
   }
